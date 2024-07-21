@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakte</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .contact { margin-bottom: 20px; }
+        .name { font-weight: bold; }
+        .number { font-size: 1.2em; color: blue; }
+        .container { max-width: 600px; margin: auto; }
+        .header { margin-bottom: 40px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kontakte</h1>
+            <p>Bitte rufen Sie die unten stehenden Nummern an.</p>
+        </div>
+        <div class="contact card p-3 mb-3">
+            <div class="name">Papa:</div>
+            <div id="papa-number" class="number"></div>
+        </div>
+        <div class="contact card p-3 mb-3">
+            <div class="name">Mama:</div>
+            <div id="mama-number" class="number"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        document.getElementById('papa-number').innerText = getParameterByName('papa');
+        document.getElementById('mama-number').innerText = getParameterByName('mama');
+    </script>
+</body>
+</html>
